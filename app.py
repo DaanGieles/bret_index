@@ -5,7 +5,6 @@ from datetime import datetime
 import calculations
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     date = datetime.now().strftime('%Y-%m-%d')
