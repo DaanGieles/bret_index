@@ -1,9 +1,7 @@
 
 import requests
 import json
-import pandas as pd
 from datetime import datetime,timedelta
-import numpy as np
 
 def load_forecast():
     date = datetime.now()
