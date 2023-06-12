@@ -18,5 +18,5 @@ def index():
 
     return render_template('index.html',forecast=forecast,date=date,bret_index = bret_index, text=text)
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
     

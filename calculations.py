@@ -2,13 +2,18 @@
 import requests
 import json
 from datetime import datetime,timedelta
-
+from pytz import timezone
 def load_forecast():
+
+    cet = timezone('Europe/Amsterdam')
+    utc = timezone('UTC')
+
     date = datetime.now()
     datetime_formatted = date.strftime('%Y-%m-%d')+'T17:00'
     print(datetime_formatted)
-    bret_json = requests.get('https://api.open-meteo.com/v1/forecast?latitude=52.39&longitude=13.84&current_weather=true&hourly=temperature_2m,windspeed_10m').json()
+    bret_json = requests.get('https://api.open-meteo.com/v1/forecast?latitude=52.39&longitude=4.84&current_weather=true&timezone=Europe/Berlin&hourly=temperature_2m,windspeed_10m').json()
     temp_hourly = dict(zip(bret_json['hourly']['time'],bret_json['hourly']['temperature_2m']))
+    print(temp_hourly)
     forecast_temp = temp_hourly[datetime_formatted]
     return forecast_temp
 
